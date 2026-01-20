@@ -21,7 +21,6 @@
     --Neutral200: hsl(217, 61%, 90%);
     --Neutral100: hsl(0, 0%, 93%);
     --Neutral0: hsl(200, 60%, 99%);
-
     --Red400: hsl(3, 86%, 64%);
     --Red500: hsl(3, 71%, 56%);
     --Red700: hsl(3, 77%, 44%);
@@ -29,17 +28,18 @@
     /*Gradient BG*/ 
     --LightGradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
     --DarkGradient: linear-gradient(180deg, #040918 0%, #091540 100%);
-
     --font-default: Arial, Helvetica, sans-serif;
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
-    padding: 20px;
-    
+    width: 100dvw;
+    height: 100dvh;
+    padding: 20px; 
     background-image: var(--DarkGradient);
     background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--Neutral900);
 }
 
 header{
@@ -47,7 +47,6 @@ header{
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-
     padding: 20px; 
 }
 
@@ -56,17 +55,14 @@ header div.logo-container{
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-
     width: 100%;
     padding: 10px;
-
     background-color: var(--Neutral800);
     border-radius: 15px;
 }
 
 header div.logo-container p{
     flex: 1 0 auto;
-
     font-size: 1.5em;
     color: var(--Neutral0);
 }
@@ -75,22 +71,18 @@ header div.logo-container button{
     width: 40px;
     height: 40px;
     padding-top: 4px;
-
     border: none;
     border-radius: 15px;
-
     background-color: var(--Neutral700);
 }
 
 header div.logo-container button:hover{background-color: var(--Neutral600); cursor: pointer;}
-button.btnfocus:focus{background-color: var(--Neutral600);}
 
 header div.navegation{
    display: flex;
    flex-flow: column wrap;
    align-items: center;
    justify-content: center;
-    
    width: 100%;
 }
 
@@ -102,25 +94,16 @@ header div.navegation div{
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-
     width: 100%;
 }
 
 header div.navegation div button{
     flex: 1 1 auto;
     padding: 7px;
-
     border: none;
     border-radius: 15px;
     font-size: 2em;
-    
-    background-color: var(--Neutral700);
-    color: var(--Neutral200);
 }
-
-header div.navegation div button.btnfocus:hover{background-color: var(--Neutral600); cursor: pointer;}
-header div.navegation div button.btnfocus:focus{color: var(--Neutral900); background-color: var(--Red500);}
-
 
 h3{
     color: var(--Neutral0);
@@ -146,11 +129,9 @@ main > section{
 article.card{
     display: flex;
     flex-flow: row wrap;
-
     padding: 20px;
     gap: 10px;
     margin-bottom: 10px;
-
     background-color: var(--Neutral800);
     border-radius: 15px;
 }
@@ -164,7 +145,6 @@ article.card > div.content-card{
     flex: 1 0;
     display: flex;
     flex-flow: column wrap;
-    
     gap: 5px;
 }
 
@@ -178,18 +158,15 @@ article.card > div.clickables{
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-
     width: 100%;
     padding: 20px 0px;
 }
 
 article.card > div.clickables button{
     padding: 5px 15px;
-
     border-style: none;
     border: 1px solid var(--Neutral600);
     border-radius: 20px;
-    
     font-size: 1.5em;
     background-color: var(--Neutral800);
     color: var(--Neutral0);
@@ -203,12 +180,27 @@ article.card > div.clickables button.btnfocus:hover{
 }
 
 article.card > div.clickables input{
-    color: #040918;
-    
+    color: #040918;  
     max-width: 5vw;
-
 }
 
+.btn-status-extensions{
+    cursor: pointer;
+}
+
+.btn-status-normal{
+    background-color: var(--Neutral700);
+    color: var(--Neutral200);
+}
+
+.btn-status-select{
+    background-color: var(--Red500);
+    color: var(--Neutral900); 
+}
+
+.btn-status-normal:hover{
+    background-color: var(--Neutral600); 
+}
 
 .bg-toggle-active, .bg-toggle-inactive{
     display: flex;
@@ -241,8 +233,4 @@ article.card > div.clickables input{
 }
 .toggle-active{
     align-self: flex-end;
-}
-
-.toggle{
-
 }
