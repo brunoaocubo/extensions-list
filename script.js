@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 for(let i = 0; i < toggle.length; i++){
     toggle[i].addEventListener('mousedown', function(){
-        const card = extensionsCard[i]
+        //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
+        const card = extensionsCard[i] 
         let toggleChild = toggle[i].firstElementChild.classList
 
         if(card.classList.contains('inactive')){
@@ -34,27 +35,29 @@ for(let b = 0; b < btnFocus.length; b++){
         btnFocus[b].classList.replace('btn-status-normal', 'btn-status-select')
 
         for(let i = 0; i < extensionsCard.length; i++){
+            let card = extensionsCard[i] //Pegando todos os cards com a classe 'btn-status-extensions'
+
             if(btnFocus[b].id === 'btn_inactive')
             {
-                if(extensionsCard[i].classList.contains('active')){
-                    extensionsCard[i].style.display = 'none'
+                if(card.classList.contains('active')){
+                    card.style.display = 'none'
                 }
                 else{
-                    extensionsCard[i].style.display = 'block'
+                    card.style.display = 'block'
                 }
             }  
             else if(btnFocus[b].id === 'btn_active')
             {
-                if(extensionsCard[i].classList.contains('inactive')){
-                    extensionsCard[i].style.display = 'none'
+                if(card.classList.contains('inactive')){
+                    card.style.display = 'none'
                 }      
                 else{
-                    extensionsCard[i].style.display = 'block'
+                    card.style.display = 'block'
                 }
             }
             else
             {
-                extensionsCard[i].style.display = 'block'
+                card.style.display = 'block'
             }
         }
     })
