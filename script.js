@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 })
 
+for(let i = 0; i < remove.length; i++){
+    remove[i].addEventListener('mousedown', function(){
+        const card = extensionsCard[i]
+        card.remove()
+    })
+}
+
 for(let i = 0; i < toggle.length; i++){
     toggle[i].addEventListener('mousedown', function(){
         //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
