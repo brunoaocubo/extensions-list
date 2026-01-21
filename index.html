@@ -9,16 +9,16 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="imagens/logo2.png" alt="Logo do Site" />
-            <p>Extensions</p>
-            <button class="btnfocus">
+        <div class="head-container">
+            <img src="imagens/logo2.png" alt="Logo do Site" id="logo"/>
+            <p id="main-title">Extensions</p>
+            <button id="btn-darkmode">
                 <img src="imagens/icon-sun.svg" alt="Alternate Text" />
             </button>
         </div>
         <div class="navegation">
-            <h2 id="text-nav">Extensions List</h2>
-            <div>
+            <h2 id="navegation-title">Extensions List</h2>
+            <div id="container-list-extension">
                 <button id="btn_all" class="btn-status-normal btn-status-extensions btnfocus">All</button>
                 <button id="btn_active" class="btn-status-normal btnfocus btn-status-extensions">Active</button>
                 <button id="btn_inactive" class="btn-status-normal btnfocus btn-status-extensions">Inactive</button>
@@ -26,158 +26,158 @@
         </div>
     </header>
     <main>
-        <section>
+        <section id="container-list-cards">
             <article class="card">
-                <img src="imagens/logo-devlens.svg" alt="Dev Lens" />
+                <img src="imagens/logo-devlens.svg" alt="Dev Lens" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>DevLens</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class="card-title">DevLens</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div>
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-style-spy.svg" alt="Style Spy" />
+                <img src="imagens/logo-style-spy.svg" alt="Style Spy" class="logo-extension" />
                 <div class="content-card">
-                    <h3>StyleSpy</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>StyleSpy</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-speed-boost.svg" alt="Speed Boost" />
+                <img src="imagens/logo-speed-boost.svg" alt="Speed Boost" class="logo-extension" />
                 <div class="content-card">
-                    <h3>SpeedBoost</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>SpeedBoost</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-json-wizard.svg" alt="Json Wizard" />
+                <img class="logo-extension" src="imagens/logo-json-wizard.svg" alt="Json Wizard"/>
                 <div class="content-card">
-                    <h3>JsonWIZARD</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>JsonWIZARD</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-tab-master-pro.svg" alt="TabMaster Pro" />
+                <img src="imagens/logo-tab-master-pro.svg" alt="TabMaster Pro" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>TabMaster Pro</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>TabMaster Pro</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-viewport-buddy.svg" alt="viewport buddy" />
+                <img src="imagens/logo-viewport-buddy.svg" alt="viewport buddy" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>ViewportBuddy</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>ViewportBuddy</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-markup-notes.svg" alt="Markup Notes" />
+                <img src="imagens/logo-markup-notes.svg" alt="Markup Notes" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Markup Notes</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Markup Notes</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-grid-guides.svg" alt="Grid Guides" />
+                <img src="imagens/logo-grid-guides.svg" alt="Grid Guides" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Grid Guides</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Grid Guides</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-palette-picker.svg" alt="Pallete Picker" />
+                <img src="imagens/logo-palette-picker.svg" alt="Pallete Picker" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Pallete Picker</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Pallete Picker</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-link-checker.svg" alt="Link Checker" />
+                <img src="imagens/logo-link-checker.svg" alt="Link Checker" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Link Checker</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Link Checker</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-dom-snapshot.svg" alt="Dom Snapshot" />
+                <img src="imagens/logo-dom-snapshot.svg" alt="Dom Snapshot" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Dom Snapshot</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Dom Snapshot</h3>
+                    <p class='card-description'>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>
                 </div>
             </article>
             <article class="card">
-                <img src="imagens/logo-console-plus.svg" alt="Console Plus" />
+                <img src="imagens/logo-console-plus.svg" alt="Console Plus" class="logo-extension"/>
                 <div class="content-card">
-                    <h3>Console Plus</h3>
-                    <p>Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
+                    <h3 class='card-title'>Console Plus</h3>
+                    <p class="card-description">Extension description goes here. It provides an overview of the extension's features and functionalities.</p>
                 </div class="content-card">
                 <div class="clickables">
-                    <button class="btnfocus">Remove</button>
+                    <button class="btn-remove">Remove</button>
                     <div class="bg-toggle-inactive toggle">
                         <div class="toggle-inactive"></div>
                     </div>

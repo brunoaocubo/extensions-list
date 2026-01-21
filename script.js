@@ -1,6 +1,7 @@
 const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const toggle = document.querySelectorAll('.toggle')
 const extensionsCard = document.querySelectorAll('.card')
+const darkMode = document.querySelector('#dark-mode')
 
 document.addEventListener('DOMContentLoaded', function(){
     for(let i = 0; i < extensionsCard.length; i++){
@@ -30,7 +31,7 @@ for(let i = 0; i < toggle.length; i++){
 }
 
 for(let b = 0; b < btnFocus.length; b++){
-    btnFocus[b].addEventListener('click', function(){
+    btnFocus[b].addEventListener('mousedown', function(){
         clearBtnSelect()
         btnFocus[b].classList.replace('btn-status-normal', 'btn-status-select')
 
