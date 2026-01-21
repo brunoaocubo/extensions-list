@@ -1,7 +1,8 @@
 const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const toggle = document.querySelectorAll('.toggle')
 const extensionsCard = document.querySelectorAll('.card')
-const darkMode = document.querySelector('#dark-mode')
+const remove =  document.querySelectorAll('.btn-remove')
+
 
 document.addEventListener('DOMContentLoaded', function(){
     for(let i = 0; i < extensionsCard.length; i++){

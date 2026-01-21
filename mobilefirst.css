@@ -13,17 +13,17 @@
 }
 
 :root{
-    --DarkNeutral900: hsl(227, 75%, 14%);
-    --Neutral800: hsl(226, 25%, 17%);
-    --Neutral700: hsl(225, 23%, 24%);
-    --Neutral600: hsl(226, 11%, 37%);
-    --Neutral300: hsl(0, 0%, 78%);
-    --Neutral200: hsl(217, 61%, 90%);
+    --font: hsl(227, 75%, 14%);
+    --containers-bg: hsl(226, 25%, 17%);
+    --buttonsHeader: hsl(225, 23%, 24%);
+    --containers-bg-2: hsl(226, 11%, 37%);
+    --description: hsl(0, 0%, 78%);
+    --text-buttons-status: hsl(217, 61%, 90%);
     --Neutral100: hsl(0, 0%, 93%);
-    --Neutral0: hsl(200, 60%, 99%);
+    --titles: hsl(200, 60%, 99%);
     --Red400: hsl(3, 86%, 64%);
-    --Red500: hsl(3, 71%, 56%);
-    --Red700: hsl(3, 77%, 44%);
+    --button-status-select: hsl(3, 71%, 56%);
+    --containers-bg-3: hsl(3, 77%, 44%);
 
     /*Gradient BG*/ 
     --LightGradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
@@ -39,7 +39,7 @@ body{
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    background-color: var(--DarkNeutral900);
+    background-color: var(--font);
 }
 
 header{
@@ -50,7 +50,6 @@ header{
     padding: 20px; 
 }
 
-
 .head-container{
     display: flex;
     flex-flow: row nowrap;
@@ -58,7 +57,7 @@ header{
     justify-content: space-between;
     width: 100%;
     padding: 10px;
-    background-color: var(--Neutral800);
+    background-color: var(--containers-bg);
     border-radius: 15px;
 }
 
@@ -66,7 +65,7 @@ header{
     padding: 5px;
     flex: 1 0 auto;
     font-size: 1.5em;
-    color: var(--Neutral0);
+    color: var(--titles);
 }
 
 #btn-darkmode{
@@ -75,11 +74,11 @@ header{
     padding-top: 4px;
     border: none;
     border-radius: 15px;
-    background-color: var(--Neutral700);
+    background-color: var(--buttonsHeader);
 }
 
 #btn-darkmode:hover{
-    background-color: var(--Neutral600); 
+    background-color: var(--containers-bg-2); 
     cursor: pointer;
 }
 
@@ -92,7 +91,7 @@ header{
 }
 
 #navegation-title{
-    color: var(--Neutral0); 
+    color: var(--titles); 
     padding: 20px 15px 15px 15px; 
     font-size: 2.5em;
 }
@@ -134,7 +133,7 @@ main{
     padding: 20px;
     gap: 10px;
     margin-bottom: 10px;
-    background-color: var(--Neutral800);
+    background-color: var(--containers-bg);
     border-radius: 15px;
 }
 
@@ -151,12 +150,12 @@ main{
 }
 
 .card-title{
-    color: var(--Neutral0);
+    color: var(--titles);
     font-size: 1.5em;
 }
 
 .card-description{
-    color: var(--Neutral300);
+    color: var(--description);
     font-size: 1.3em;
     text-align: left;
 }
@@ -173,17 +172,17 @@ main{
 .btn-remove{
     padding: 5px 15px;
     border-style: none;
-    border: 1px solid var(--Neutral600);
+    border: 1px solid var(--containers-bg-2);
     border-radius: 20px;
     font-size: 1.5em;
-    background-color: var(--Neutral800);
-    color: var(--Neutral0);
+    background-color: var(--containers-bg);
+    color: var(--titles);
     cursor: pointer;
 }
 
 .btn-remove:hover{
-    background-color: var(--Neutral0);
-    color: var(--DarkNeutral900);
+    background-color: var(--titles);
+    color: var(--font);
 }
 
 .clickables input{
@@ -192,17 +191,17 @@ main{
 }
 
 .btn-status-normal{
-    background-color: var(--Neutral700);
-    color: var(--Neutral200);
+    background-color: var(--buttonsHeader);
+    color: var(--text-buttons-status);
 }
 
 .btn-status-normal:hover{
-    background-color: var(--Neutral600); 
+    background-color: var(--containers-bg-2); 
 }
 
 .btn-status-select{
-    background-color: var(--Red500);
-    color: var(--DarkNeutral900); 
+    background-color: var(--button-status-select);
+    color: var(--font); 
 }
 
 .bg-toggle-active, .bg-toggle-inactive{
@@ -217,16 +216,16 @@ main{
 }
 
 .bg-toggle-active{
-    background-color: var(--Red700);
+    background-color: var(--containers-bg-3);
 }
 
 .bg-toggle-inactive{
-    background-color: var(--Neutral600);
+    background-color: var(--containers-bg-2);
 }
 
 .toggle-active, .toggle-inactive{
     border-radius: 50%;
-    background-color: var(--Neutral0);
+    background-color: var(--titles);
     width: 25px;
     height: 25px;
 }
