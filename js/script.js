@@ -1,5 +1,5 @@
 const btnFocus = document.querySelectorAll('.btn-status-extensions')
-const toggle = document.querySelectorAll('.toggle')
+const toggles = document.querySelectorAll('.toggle')
 const extensionsCard = document.querySelectorAll('.card')
 const remove =  document.querySelectorAll('.btn-remove')
 const extensionToAdd = []
@@ -104,29 +104,32 @@ let CreateCliackables = function(card){
 
 for(let i = 0; i < remove.length; i++){
     remove[i].addEventListener('mousedown', function(){
-        const card = toggle[i].closest(".card")
+        const card = toggles[i].closest(".card")
         card.remove()
     })
 }
 
-for(let i = 0; i < toggle.length; i++){
-    toggle[i].addEventListener('mousedown', function(){
-        //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
-        const card = toggle[i].closest(".card")
-        let toggleChild = toggle[i].firstElementChild.classList
+toggles.forEach((toggle) => {
+    toggle.addEventListener('mousedown', () =>{
+    //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
+    const card = toggle.closest(".card")
+    let toggleChild = toggle.firstElementChild.classList
 
-        if(card.classList.contains('inactive')){
-            toggleChild.replace('toggle-inactive', 'toggle-active')
-            card.classList.replace('inactive', 'active')
-            toggle[i].classList.replace('bg-toggle-inactive', 'bg-toggle-active')
-        }
-        else{
-            toggleChild.replace('toggle-active', 'toggle-inactive')
-            card.classList.replace('active', 'inactive')
-            toggle[i].classList.replace('bg-toggle-active', 'bg-toggle-inactive')
-        }
+    if(card.classList.contains('inactive')){
+        toggleChild.replace('toggle-inactive', 'toggle-active')
+        card.classList.replace('inactive', 'active')
+        toggle.classList.replace('bg-toggle-inactive', 'bg-toggle-active')
+    }
+    else{
+        toggleChild.replace('toggle-active', 'toggle-inactive')
+        card.classList.replace('active', 'inactive')
+        toggle.classList.replace('bg-toggle-active', 'bg-toggle-inactive')
+    }
     })
-}
+})
+
+
+
 
 for(let b = 0; b < btnFocus.length; b++){
     btnFocus[b].addEventListener('mousedown', function(){
