@@ -2,7 +2,18 @@ const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const toggle = document.querySelectorAll('.toggle')
 const extensionsCard = document.querySelectorAll('.card')
 const remove =  document.querySelectorAll('.btn-remove')
+const extensionToAdd = []
+const containerListCards = document.querySelector('#container-list-cards')
+const add = document.querySelectorAll('.btn-add')
 
+class ExtensionAtributes{
+    constructor(img_path, card_title, card_description)
+    {
+        this.img_path = img_path;
+        this.card_title = card_title;
+        this.card_description = card_description;
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function(){
     for(let i = 0; i < extensionsCard.length; i++){
@@ -12,9 +23,43 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 })
 
+for(let i = 0; i < add.length; i++){
+    add[i].addEventListener('mousedown', function(){
+        const card = add[i].closest(".card")
+        saveAtributesExtension(card)
+    })
+}
+
+let saveAtributesExtension = function(card){
+    const img_path = card.querySelector('img').getAttribute("src")
+    const card_title = card.querySelector('.content-card > .card-title').textContent
+    const card_description = card.querySelector('.card-description').textContent
+    const extension = new ExtensionAtributes(img_path, card_title, card_description)
+    extensionToAdd.push(extension)
+
+    //Irá salvar um objeto de objetos
+    localStorage.setItem("extensions", JSON.stringify(extensionToAdd))
+}
+
+if(window.location.pathname.includes("index")){
+    const refresh = document.querySelector('#refresh')
+    refresh.addEventListener('mousedown', function(){
+        const card = document.createElement("article")
+        card.classList.add('card')
+        console.log(localStorage.extension)
+        containerListCards.appendChild(card)
+
+        //Irá retornar um objeto de objetos.
+        const list_extensions = JSON.parse(localStorage.getItem("extensions"))
+        for(let i = 0; i < list_extensions.length; i++){
+            list_extensions[i].card_title  
+        }
+    })
+}
+
 for(let i = 0; i < remove.length; i++){
     remove[i].addEventListener('mousedown', function(){
-        const card = extensionsCard[i]
+        const card = toggle[i].closest(".card")
         card.remove()
     })
 }
@@ -22,7 +67,7 @@ for(let i = 0; i < remove.length; i++){
 for(let i = 0; i < toggle.length; i++){
     toggle[i].addEventListener('mousedown', function(){
         //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
-        const card = extensionsCard[i] 
+        const card = toggle[i].closest(".card")
         let toggleChild = toggle[i].firstElementChild.classList
 
         if(card.classList.contains('inactive')){
