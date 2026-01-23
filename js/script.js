@@ -1,17 +1,16 @@
 const btnFocus = document.querySelectorAll('.btn-status-extensions')
-const toggles = document.querySelectorAll('.toggle')
-const extensionsCard = document.querySelectorAll('.card')
-const remove =  document.querySelectorAll('.btn-remove')
-const extensionToAdd = []
 const containerListCards = document.querySelector('#container-list-cards')
 const add = document.querySelectorAll('.btn-add')
 
-document.addEventListener('DOMContentLoaded', function(){
-    for(let i = 0; i < extensionsCard.length; i++){
-        if(!extensionsCard[i].classList.contains('inactive') || !extensionsCard[i].classList.contains('active')){
-            extensionsCard[i].classList.add('inactive')
+document.addEventListener('DOMContentLoaded', (event) => {
+    event = document.querySelectorAll('.card')
+
+    event.forEach((element) => {
+        if(!element.classList.contains('inactive') || element.classList.contains('active'))
+        {
+            element.classList.add('inactive')
         }
-    }
+    })
 })
 
 containerListCards.addEventListener('click', (event) =>{
@@ -21,56 +20,55 @@ containerListCards.addEventListener('click', (event) =>{
 
     if(toggle){
         //Relacionando o card com o botão clicado. O fluxo vai checar as informações de acordo com o que foi clciado.
-        const toggleChild = toggle.firstElementChild.classList
+        const toggleChild = toggle.firstElementChild
+        const active = card.classList.contains('active')
 
-        if(card.classList.contains('inactive')){
-            toggleChild.replace('toggle-inactive', 'toggle-active')
-            card.classList.replace('inactive', 'active')
-            toggle.classList.replace('bg-toggle-inactive', 'bg-toggle-active')
-        }
-        else{
-            toggleChild.replace('toggle-active', 'toggle-inactive')
-            card.classList.replace('active', 'inactive')
-            toggle.classList.replace('bg-toggle-active', 'bg-toggle-inactive')
-        }
+        card.classList.toggle('inactive', active)
+        card.classList.toggle('active', !active)
+
+        toggleChild.classList.toggle('toggle-inactive', active)
+        toggleChild.classList.toggle('toggle-active', !active)
+
+        toggle.classList.toggle('bg-toggle-inactive', active)
+        toggle.classList.toggle('bg-toggle-active', !active)
+
     }
     else if(remove){
         card.remove()
     }
 })
 
-for(let b = 0; b < btnFocus.length; b++){
-    btnFocus[b].addEventListener('click', function(){
-        clearBtnSelect()
-        btnFocus[b].classList.replace('btn-status-normal', 'btn-status-select')
+btnFocus.forEach((btn_status) => {
+    btn_status.addEventListener('click', () => {
+        clearBtnSelect(btn_status)
+        statusFilter(btn_status)
+    })
+})
 
-        for(let i = 0; i < extensionsCard.length; i++){
-            let card = extensionsCard[i] //Pegando todos os cards com a classe 'btn-status-extensions'
+let clearBtnSelect = function(element){
+    for(let i = 0; i < btnFocus.length; i++){
+        btnFocus[i].classList.replace('btn-status-select', 'btn-status-normal')
+    }
+    element.classList.replace('btn-status-normal', 'btn-status-select')
+}
 
-            if(btnFocus[b].id === 'btn_inactive')
-            {
-                if(card.classList.contains('active')){
-                    card.style.display = 'none'
-                }
-                else{
-                    card.style.display = 'block'
-                }
-            }  
-            else if(btnFocus[b].id === 'btn_active')
-            {
-                if(card.classList.contains('inactive')){
-                    card.style.display = 'none'
-                }      
-                else{
-                    card.style.display = 'block'
-                }
-            }
-            else
-            {
-                card.style.display = 'block'
-            }
+let statusFilter = function(btn_status){
+    document.querySelectorAll('.card').forEach((card) => {
+        if(btn_status.id === 'btn_inactive'){
+            card.classList.contains('active')?
+            card.style.display = 'none': 
+            card.style.display = 'flex'
+        }
+        else if(btn_status.id === 'btn_active'){
+            card.classList.contains('inactive')?
+            card.style.display = 'none':
+            card.style.display = 'flex'
+        }
+        else{
+            card.style.display = 'flex'
         }
     })
+
 }
 
 if(window.location.pathname.includes("index")){
@@ -107,6 +105,7 @@ let SaveAtributesExtension = function(card){
     const card_title = card.querySelector('.content-card > .card-title').textContent
     const card_description = card.querySelector('.card-description').textContent
     const extension = new ExtensionAttributes(img_path, card_title, card_description)
+    const extensionToAdd = []
     extensionToAdd.push(extension)
 
     //Irá salvar um objeto de objetos
@@ -114,9 +113,8 @@ let SaveAtributesExtension = function(card){
 }
 
 let CreateCard = function(img_path, card_title, card_description){
-    //const card = document.createElement("article")
     const card = `
-        <article class="card">
+        <article class="card inactive">
                 <img src="${img_path}" alt="${card_title}" class="logo-extension" />
                 <div class="content-card">
                     <h3 class='card-title'>${card_title}</h3>
@@ -130,55 +128,5 @@ let CreateCard = function(img_path, card_title, card_description){
                 </div>
             </article>
     `
-    //card.classList.add('card')
-    //card.classList.add('inactive')
-    //CreateLogo(card, img_path, card_title)
-    //CreateContentCard(card, card_title, card_description)
-    //CreateCliackables(card)
     containerListCards.insertAdjacentHTML('beforeend', card)
-}
-
-let CreateLogo = function(card, img_path, card_title){
-    const logo = document.createElement("img")
-    logo.setAttribute("src", img_path)
-    logo.setAttribute("alt", card_title)
-    logo.classList.add('logo-extension')
-    card.appendChild(logo)
-}
-
-let CreateContentCard = function(card, card_title, card_description){
-    const content_card = document.createElement("div")
-    const title = document.createElement("h3")
-    const description = document.createElement("p")
-    content_card.classList.add("content-card")
-    title.classList.add("card-title")
-    description.classList.add("card-description")
-    title.textContent = card_title
-    description.textContent = card_description
-    content_card.appendChild(title)
-    content_card.appendChild(description)
-    card.appendChild(content_card)
-}
-
-let CreateCliackables = function(card){
-    const container_clickables = document.createElement("div") 
-    const btn_remove = document.createElement("button")
-    const div_bg_toggle = document.createElement("div")
-    const toggle = document.createElement("div")
-    container_clickables.classList.add("clickables")
-    btn_remove.classList.add("btn-remove")
-    div_bg_toggle.classList.add("bg-toggle-inactive")
-    div_bg_toggle.classList.add("toggle")
-    toggle.classList.add("toggle-inactive")
-    btn_remove.textContent = "Remove"
-    container_clickables.appendChild(btn_remove)
-    container_clickables.appendChild(div_bg_toggle)
-    div_bg_toggle.appendChild(toggle)
-    card.appendChild(container_clickables)
-}
-
-let clearBtnSelect = function(){
-    for(let i = 0; i < btnFocus.length; i++){
-        btnFocus[i].classList.replace('btn-status-select', 'btn-status-normal')
-    }
 }
