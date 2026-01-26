@@ -13,22 +13,64 @@
 }
 
 :root{
-    --font: hsl(227, 75%, 14%);
-    --containers-bg: hsl(226, 25%, 17%);
     --buttonsHeader: hsl(225, 23%, 24%);
-    --containers-bg-2: hsl(226, 11%, 37%);
-    --description: hsl(0, 0%, 78%);
-    --text-buttons-status: hsl(217, 61%, 90%);
-    --Neutral100: hsl(0, 0%, 93%);
-    --titles: hsl(200, 60%, 99%);
-    --Red400: hsl(3, 86%, 64%);
+    --button-dark: hsl(226, 11%, 37%); 
     --button-status-select: hsl(3, 71%, 56%);
-    --containers-bg-3: hsl(3, 77%, 44%);
+    --text-buttons-status: hsl(217, 61%, 90%);
+    --button-refresh: white;
 
+    --font: hsl(227, 75%, 14%);
+    --titles: hsl(200, 60%, 99%);
+    --description: hsl(0, 0%, 78%);
+    --containers-bg: hsl(226, 25%, 17%);
+    --containers-bg-2: hsl(226, 11%, 37%);
+
+    --background-remove-add: hsl(226, 25%, 17%);
+    --border-remove-add: hsl(226, 11%, 37%);
+    --hover-remove-add: hsl(3, 71%, 56%);
+    --border-focus-remove-add: hsl(3, 86%, 64%);
+    --background-focus-remove-add: hsl(226, 11%, 37%);
+
+    --background-toggle-active: hsl(3, 77%, 44%);
+    --background-toggle-inactive: hsl(226, 11%, 37%);
+    --toggle-circle: hsl(200, 60%, 99%); 
+
+    --Neutral100: hsl(0, 0%, 93%);
+    --Red400: hsl(3, 86%, 64%);
+    
     /*Gradient BG*/ 
     --LightGradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
     --DarkGradient: linear-gradient(180deg, #040918 0%, #091540 100%);
     --font-default: Arial, Helvetica, sans-serif;
+}
+
+body.dark{
+    --buttonsHeader: hsl(225, 23%, 24%);
+    --button-dark: hsl(0, 0%, 93%); 
+    --button-status-select: hsl(3, 77%, 44%);
+    --text-buttons-status: hsl(227, 75%, 14%);
+    --border-focus-btn-header: hsl(3, 86%, 64%);
+
+    --font: hsl(200, 60%, 99%);
+    --titles: hsl(227, 75%, 14%);
+    --description: hsl(226, 25%, 17%);
+    --containers-bg: white;
+    --containers-bg-2: hsl(3, 71%, 56%);
+
+    --background-remove-add: hsl(200, 60%, 99%);
+    --border-remove-add: hsl(0, 0%, 78%);
+    --hover-remove-add: hsl(3, 71%, 56%);
+    --border-focus-remove-add: hsl(3, 86%, 64%);
+    --background-focus-remove-add: hsl(226, 11%, 37%);
+
+    --background-toggle-active: hsl(3, 71%, 56%);
+    --background-toggle-inactive: hsl(0, 0%, 78%);
+
+    --Neutral100: hsl(0, 0%, 93%);
+    --Red400: hsl(3, 86%, 64%);
+
+    /*Gradient BG*/ 
+    --DarkGradient: var(--LightGradient);
 }
 
 body{
@@ -61,6 +103,10 @@ header{
     border-radius: 15px;
 }
 
+main{
+    padding-bottom: 20px;
+}
+
 #main-title{
     padding: 5px;
     flex: 1 0 auto;
@@ -74,7 +120,11 @@ header{
     padding-top: 4px;
     border: none;
     border-radius: 15px;
-    background-color: var(--buttonsHeader);
+    background-color: var(--button-dark);
+}
+
+#btn-darkmode:focus{
+    border-color: var(--border-focus-btn-header);
 }
 
 #btn-darkmode:hover{
@@ -96,6 +146,13 @@ header{
     font-size: 2.5em;
 }
 
+.page-store #navegation-title{
+    color: var(--titles); 
+    padding: 20px 15px 15px 15px; 
+    font-size: 2em;
+    text-align: center;
+}
+
 #container-list-extension{
     display: flex;
     flex-flow: row wrap;
@@ -112,6 +169,30 @@ header{
     border-radius: 15px;
     font-size: 2em;
     cursor: pointer;
+}
+
+#refresh{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    flex: 0;
+    background-color: var(--button-refresh);
+}
+
+#refresh span{
+    font-size: 1em;
+}
+
+#refresh:hover{ 
+    background-color: var(--Red400);
+}
+
+#refresh:active{
+    background-color: var(--button-status-select);
 }
 
 main{
@@ -135,6 +216,8 @@ main{
     margin-bottom: 10px;
     background-color: var(--containers-bg);
     border-radius: 15px;
+
+    transition: 1s ease-in-out;
 }
 
 .logo-extension{
@@ -169,20 +252,26 @@ main{
     padding: 20px 0px;
 }
 
-.btn-remove{
+.btn-remove, .btn-add{
     padding: 5px 15px;
     border-style: none;
-    border: 1px solid var(--containers-bg-2);
+    border: 1px solid;
+    border-color: var(--border-remove-add);
     border-radius: 20px;
     font-size: 1.5em;
-    background-color: var(--containers-bg);
+    background-color: var(--background-remove-add);
     color: var(--titles);
     cursor: pointer;
 }
 
-.btn-remove:hover{
-    background-color: var(--titles);
+.btn-remove:hover, .btn-add:hover{
+    background-color: var(--hover-remove-add);
     color: var(--font);
+}
+
+.btn-remove:focus, .btn-add:focus{
+    border-color: var(--border-focus-remove-add);
+    background-color: var(--background-focus-remove-add);
 }
 
 .clickables input{
@@ -191,7 +280,7 @@ main{
 }
 
 .btn-status-normal{
-    background-color: var(--buttonsHeader);
+    background-color: var(--containers-bg);
     color: var(--text-buttons-status);
 }
 
@@ -216,16 +305,16 @@ main{
 }
 
 .bg-toggle-active{
-    background-color: var(--containers-bg-3);
+    background-color: var(--background-toggle-active);
 }
 
 .bg-toggle-inactive{
-    background-color: var(--containers-bg-2);
+    background-color: var(--background-toggle-inactive);
 }
 
 .toggle-active, .toggle-inactive{
     border-radius: 50%;
-    background-color: var(--titles);
+    background-color: var(--toggle-circle);
     width: 25px;
     height: 25px;
 }

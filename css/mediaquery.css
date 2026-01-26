@@ -27,8 +27,12 @@
 
     #navegation-title{
         align-self: flex-start;
-        color: var(--Neutral0); padding: 0px 0px 0px 0px; 
+        padding: 0px 0px 0px 0px; 
         font-size: 2em;
+    }
+
+    .page-store #navegation-title{
+        margin-inline: auto;
     }
 
     #container-list-extension{
@@ -42,8 +46,17 @@
         border: none;
         border-radius: 15px;
         font-size: 1em;
-        background-color: var(--Neutral700);
-        color: var(--Neutral200);
+        /*background-color: var(--buttonsHeader);
+        color: var(--text-buttons-status);*/
+    }
+
+    #refresh{
+        padding: 6px 5px;
+    }
+
+    #refresh span{
+        font-size: 1.5em;
+
     }
 
     #container-list-cards{
@@ -61,7 +74,6 @@
     }
 
     .card-title{
-        color: var(--Neutral0);
         font-size: 1em;
     }
 

@@ -2,6 +2,8 @@ const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const containerListCards = document.querySelector('#container-list-cards')
 const add = document.querySelectorAll('.btn-add')
 
+const darkMode = document.querySelector('#btn-darkmode')
+
 document.addEventListener('DOMContentLoaded', (event) => {
     event = document.querySelectorAll('.card')
 
@@ -12,6 +14,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     })
 })
+
+darkMode.addEventListener('click', (() => {
+    const img = darkMode.querySelector('img')
+    if(document.body.classList.contains('dark')){
+        document.body.classList.remove('dark')
+        img.src = '../imagens/icon-sun.svg'
+    }
+    else{
+        document.body.classList.add('dark')  
+        img.src = '../imagens/icon-moon.svg'
+    }
+}))
+
 
 containerListCards.addEventListener('click', (event) =>{
     const remove = event.target.closest(".btn-remove")
@@ -81,6 +96,7 @@ if(window.location.pathname.includes("index")){
         //console.log(item)
 
         CreateCard(item.img_path, item.card_title, item.card_description)
+        
     })
 }
 
@@ -110,6 +126,10 @@ let SaveAtributesExtension = function(card){
 
     //Irá salvar um objeto de objetos
     localStorage.setItem("extensions", JSON.stringify(extensionToAdd))
+
+    if(localStorage.getItem("extensions") != null){
+        window.alert(`Extensão: ${card_title} adicionada na sua lista de extensões!`)
+    }
 }
 
 let CreateCard = function(img_path, card_title, card_description){
@@ -128,5 +148,20 @@ let CreateCard = function(img_path, card_title, card_description){
                 </div>
             </article>
     `
-    containerListCards.insertAdjacentHTML('beforeend', card)
+    try {
+        containerListCards.lastElementChild.scrollIntoView()
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+    setTimeout(() => {
+        try {
+            containerListCards.insertAdjacentHTML('beforeend', card)
+            containerListCards.lastElementChild.scrollIntoView()
+        } catch (error) {
+            console.log(error)
+        }
+
+    }, 1000)
 }
