@@ -19,11 +19,11 @@ darkMode.addEventListener('click', (() => {
     const img = darkMode.querySelector('img')
     if(document.body.classList.contains('dark')){
         document.body.classList.remove('dark')
-        img.src = '../imagens/icon-sun.svg'
+        img.src = 'imagens/icon-sun.svg'
     }
     else{
         document.body.classList.add('dark')  
-        img.src = '../imagens/icon-moon.svg'
+        img.src = 'imagens/icon-moon.svg'
     }
 }))
 
@@ -125,7 +125,8 @@ class ExtensionAttributes{
 }
 
 let SaveAtributesExtension = function(card){
-    const img_path = card.querySelector('img').getAttribute("src")
+    const img_path_complete = card.querySelector('img').getAttribute("src")
+    const img_path = img_path_complete.split("../").join("")
     const card_title = card.querySelector('.content-card > .card-title').textContent
     const card_description = card.querySelector('.card-description').textContent
     const extension = new ExtensionAttributes(img_path, card_title, card_description)
