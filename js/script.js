@@ -2,7 +2,7 @@ const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const containerListCards = document.querySelector('#container-list-cards')
 const add = document.querySelectorAll('.btn-add')
 const darkMode = document.querySelector('#btn-darkmode')
-const extensionToAdd = []
+let extensionToAdd = []
 
 document.addEventListener('DOMContentLoaded', (event) => {
     event = document.querySelectorAll('.card')
@@ -19,7 +19,7 @@ darkMode.addEventListener('click', (() => {
     const img = darkMode.querySelector('img')
     const sun_path = 'imagens/icon-sun.svg'
     const moon_path = 'imagens/icon-moon.svg'
-   
+    
     if(document.body.classList.contains('dark')){
         document.body.classList.remove('dark')
         if(window.location.pathname.includes("index")){
@@ -39,7 +39,6 @@ darkMode.addEventListener('click', (() => {
         } 
     }
 }))
-
 
 containerListCards.addEventListener('click', (event) =>{
     const remove = event.target.closest(".btn-remove")
@@ -104,29 +103,18 @@ if(window.location.pathname.includes("index")){
     refresh.addEventListener('click', function(){
         //Irá retornar um objeto de objetos.
         const list_extensions = JSON.parse(localStorage.getItem("extensions"))
-        try{
+        localStorage.clear()
+
+        if(list_extensions != null){
             list_extensions.forEach((item) => {
                 CreateCard(item.img_path, item.card_title, item.card_description)   
             })
-
-            ClearStorage()
         }
-        catch{
+        else{
             window.alert('Nenhuma extensão do Store para adicionar')
-        }
+        }       
     })
 }
-
-let ClearStorage = () => {
-    localStorage.removeItem("extensions")
-}
-
-add.forEach((element) => {
-    element.addEventListener('click', () => {
-        const card = element.closest(".card")
-        SaveAtributesExtension(card)
-    })
-})
 
 class ExtensionAttributes{
     constructor(img_path, card_title, card_description)
@@ -141,16 +129,30 @@ let SaveAtributesExtension = function(card){
     const img_path_complete = card.querySelector('img').getAttribute("src")
     const img_path = img_path_complete.split("../").join("")
     const card_title = card.querySelector('.content-card > .card-title').textContent
-    const card_description = card.querySelector('.card-description').textContent
+    const card_description = card.querySelector('.card-description').textContent 
+    const list_extensions = JSON.parse(localStorage.getItem("extensions"))
+    
+    if(list_extensions == null){
+        extensionToAdd = []
+    }
+
     const extension = new ExtensionAttributes(img_path, card_title, card_description)
     extensionToAdd.push(extension)
-
-    //Irá salvar um objeto de objetos
     localStorage.setItem("extensions", JSON.stringify(extensionToAdd))
+    //console.log(JSON.parse(localStorage.getItem("extensions")));
+        
+    //Irá salvar um objeto de objetos
     if(localStorage.getItem("extensions") != null){
         window.alert(`Extensão: ${card_title} adicionada na sua lista de extensões!`)
     }
 }
+
+add.forEach((element) => {
+    element.addEventListener('click', () => {
+        const card = element.closest(".card")
+        SaveAtributesExtension(card)
+    })
+})
 
 let CreateCard = function(img_path, card_title, card_description){
     const card = `
@@ -170,7 +172,6 @@ let CreateCard = function(img_path, card_title, card_description){
     `
     try {
         containerListCards.lastElementChild.scrollIntoView()
-        
     } catch (error) {
         console.log(error)
     }
