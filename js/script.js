@@ -22,7 +22,7 @@ darkMode.addEventListener('click', (() => {
     
     if(document.body.classList.contains('dark')){
         document.body.classList.remove('dark')
-        if(window.location.pathname.includes("index")){
+        if(document.location.pathname.includes("extensions-list") || window.location.pathname.includes("index")){
             img.src = sun_path
         }
         else{
@@ -31,7 +31,7 @@ darkMode.addEventListener('click', (() => {
     }
     else{
         document.body.classList.add('dark') 
-        if(window.location.pathname.includes("index")){
+        if(document.location.pathname.includes("extensions-list") || window.location.pathname.includes("index")){
             img.src = moon_path
         }
         else{
@@ -66,6 +66,9 @@ containerListCards.addEventListener('click', (event) =>{
 })
 
 btnFocus.forEach((btn_status) => {
+    if(btn_status.id === 'btn_all'){
+        btn_status.classList.replace('btn-status-normal', 'btn-status-select')
+    }
     btn_status.addEventListener('click', () => {
         clearBtnSelect(btn_status)
         statusFilter(btn_status)
@@ -98,7 +101,7 @@ let statusFilter = function(btn_status){
 
 }
 
-if(window.location.pathname.includes("index")){
+if(window.location.pathname.includes("index") || document.location.pathname.includes("extensions-list")){
     const refresh = document.querySelector('#refresh')
     refresh.addEventListener('click', function(){
         //Irá retornar um objeto de objetos.
