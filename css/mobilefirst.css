@@ -18,6 +18,7 @@
     --button-dark-hover: hsl(226, 11%, 37%);
     --button-status-select: hsl(3, 71%, 56%);
     --text-buttons-status: hsl(217, 61%, 90%);
+    --text-buttons-status-hover: hsl(200, 60%, 99%);
     --button-refresh: white;
 
     --font: hsl(227, 75%, 14%);
@@ -31,6 +32,7 @@
     --hover-remove-add: hsl(3, 71%, 56%);
     --border-focus-remove-add: hsl(3, 86%, 64%);
     --background-focus-remove-add: hsl(226, 11%, 37%);
+    --text-focus-remove-add: hsl(200, 60%, 99%);
 
     --background-toggle-active: hsl(3, 77%, 44%);
     --background-toggle-inactive: hsl(226, 11%, 37%);
@@ -64,7 +66,9 @@ body.dark{
     --border-remove-add: hsl(0, 0%, 78%);
     --hover-remove-add: hsl(3, 71%, 56%);
     --border-focus-remove-add: hsl(3, 86%, 64%);
-    --background-focus-remove-add: hsl(226, 11%, 37%);
+    --background-focus-remove-add: hsl(0, 0%, 93%);
+    --text-focus-remove-add: hsl(227, 75%, 14%);
+
 
     --background-toggle-active: hsl(3, 71%, 56%);
     --background-toggle-inactive: hsl(0, 0%, 78%);
@@ -302,6 +306,7 @@ main{
 .btn-remove:focus, .btn-add:focus{
     border-color: var(--border-focus-remove-add);
     background-color: var(--background-focus-remove-add);
+    color: var(--text-focus-remove-add);
 }
 
 .clickables input{

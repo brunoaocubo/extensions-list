@@ -1,8 +1,8 @@
 const btnFocus = document.querySelectorAll('.btn-status-extensions')
 const containerListCards = document.querySelector('#container-list-cards')
 const add = document.querySelectorAll('.btn-add')
-
 const darkMode = document.querySelector('#btn-darkmode')
+const extensionToAdd = []
 
 document.addEventListener('DOMContentLoaded', (event) => {
     event = document.querySelectorAll('.card')
@@ -89,15 +89,23 @@ let statusFilter = function(btn_status){
 if(window.location.pathname.includes("index")){
     const refresh = document.querySelector('#refresh')
     refresh.addEventListener('click', function(){
-
         //Irá retornar um objeto de objetos.
         const list_extensions = JSON.parse(localStorage.getItem("extensions"))
-        const item = list_extensions[0]
-        //console.log(item)
+        try{
+            list_extensions.forEach((item) => {
+                CreateCard(item.img_path, item.card_title, item.card_description)   
+            })
 
-        CreateCard(item.img_path, item.card_title, item.card_description)
-        
+            ClearStorage()
+        }
+        catch{
+            window.alert('Nenhuma extensão do Store para adicionar')
+        }
     })
+}
+
+let ClearStorage = () => {
+    localStorage.removeItem("extensions")
 }
 
 add.forEach((element) => {
@@ -121,12 +129,10 @@ let SaveAtributesExtension = function(card){
     const card_title = card.querySelector('.content-card > .card-title').textContent
     const card_description = card.querySelector('.card-description').textContent
     const extension = new ExtensionAttributes(img_path, card_title, card_description)
-    const extensionToAdd = []
     extensionToAdd.push(extension)
 
     //Irá salvar um objeto de objetos
     localStorage.setItem("extensions", JSON.stringify(extensionToAdd))
-
     if(localStorage.getItem("extensions") != null){
         window.alert(`Extensão: ${card_title} adicionada na sua lista de extensões!`)
     }
