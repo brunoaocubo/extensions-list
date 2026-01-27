@@ -17,13 +17,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 darkMode.addEventListener('click', (() => {
     const img = darkMode.querySelector('img')
+    const sun_path = 'imagens/icon-sun.svg'
+    const moon_path = 'imagens/icon-moon.svg'
+   
     if(document.body.classList.contains('dark')){
         document.body.classList.remove('dark')
-        img.src = 'imagens/icon-sun.svg'
+        if(window.location.pathname.includes("index")){
+            img.src = sun_path
+        }
+        else{
+            img.src = '../' + sun_path
+        }
     }
     else{
-        document.body.classList.add('dark')  
-        img.src = 'imagens/icon-moon.svg'
+        document.body.classList.add('dark') 
+        if(window.location.pathname.includes("index")){
+            img.src = moon_path
+        }
+        else{
+            img.src = '../' + moon_path
+        } 
     }
 }))
 

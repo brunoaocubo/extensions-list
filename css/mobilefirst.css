@@ -96,7 +96,7 @@ header{
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    padding: 20px; 
+    padding: 20px 0px; 
 }
 
 .head-container{
@@ -123,10 +123,12 @@ main{
 
 #link{
     background-color: var(--button-dark);
-    padding: 9px 10px;
+    padding-block: 10px;
+    padding-inline: 10px;
     border-radius: 15px;
-    margin-right: 20px;
+    margin-right: 10px;
     color: var(--titles);
+    text-align: center;
 }
 
 #link:hover{
