@@ -1,5 +1,34 @@
-const add = document.querySelectorAll('.btn-add')
+const list_btn_add = document.querySelectorAll('.btn-add')
 
+const SaveAtributesExtension = (card)=>{
+    const img_path_complete = card.querySelector('img').getAttribute("src")
+    const img_path = img_path_complete.split("../").join("")
+    const card_title = card.querySelector('.content-card > .card-title').textContent
+    const card_description = card.querySelector('.card-description').textContent 
+    const newExtension = {img_path, card_title, card_description}
+    const extensions = "extensions"
+
+    const list_extensions = JSON.parse(localStorage.getItem(extensions))
+    if(list_extensions == null){
+        extensionToAdd = []
+    }
+
+    extensionToAdd.push(newExtension)
+    localStorage.setItem(extensions, JSON.stringify(extensionToAdd)) //Irá salvar um objeto de objetos
+        
+    if(localStorage.getItem(extensions) != null){
+        window.alert(`Extensão: ${card_title} adicionada na sua lista de extensões!`)
+    }
+}
+
+list_btn_add.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest(".card")
+        SaveAtributesExtension(card)
+    })
+})
+
+/*
 class ExtensionAttributes{
     constructor(img_path, card_title, card_description)
     {
@@ -8,6 +37,7 @@ class ExtensionAttributes{
         this.card_description = card_description;
     }
 }
+
 
 let SaveAtributesExtension = function(card){
     const img_path_complete = card.querySelector('img').getAttribute("src")
@@ -36,4 +66,4 @@ add.forEach((element) => {
         const card = element.closest(".card")
         SaveAtributesExtension(card)
     })
-})
+})*/

@@ -83,6 +83,22 @@ let clearBtnSelect = function(element){
 
 let statusFilter = function(btn_status){
     document.querySelectorAll('.card').forEach((card) => {
+        switch (btn_status.id) {
+            case 'btn_inactive':
+                card.classList.contains('active')?
+                card.style.display = 'none': 
+                card.style.display = 'flex'
+                break;
+            case 'btn_active':
+                card.classList.contains('inactive')?
+                card.style.display = 'none':
+                card.style.display = 'flex'
+                break;
+            default:
+                card.style.display = 'flex'
+            break;
+        }
+        /*
         if(btn_status.id === 'btn_inactive'){
             card.classList.contains('active')?
             card.style.display = 'none': 
@@ -95,9 +111,8 @@ let statusFilter = function(btn_status){
         }
         else{
             card.style.display = 'flex'
-        }
+        }*/
     })
-
 }
 
 try{
@@ -120,7 +135,6 @@ try{
 catch(error){
     console.log(error)
 }
-
 
 let CreateCard = function(img_path, card_title, card_description){
     const card = `
